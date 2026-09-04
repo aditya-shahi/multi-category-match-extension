@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 550px;
+      min-height: 450px;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 15px;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 10px;
+    }
+    
+    h2 {
+      margin: 0;
+      color: #333;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    button.danger {
+      background-color: #f44336;
+    }
+    
+    button.danger:hover {
+      background-color: #da190b;
+    }
+    
+    button.secondary {
+      background-color: #2196F3;
+    }
+    
+    button.nav-btn {
+      background-color: #FF9800;
+      font-size: 12px;
+      padding: 4px 8px;
+      margin: 2px;
+    }
+    
+    button.nav-btn:hover {
+      background-color: #F57C00;
+    }
+    
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 15px;
+    }
+    
+    .tab {
+      padding: 8px 16px;
+      cursor: pointer;
+      background: #f1f1f1;
+      border: none;
+      margin-right: 5px;
+      border-radius: 4px 4px 0 0;
+    }
+    
+    .tab.active {
+      background: #4CAF50;
+      color: white;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .category-item {
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    
+    .category-name {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .keywords-input {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    
+    .add-category {
+      margin-top: 15px;
+      padding: 10px;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
+    
+    .add-category input {
+      padding: 5px;
+      margin-right: 5px;
+      width: 60%;
+    }
+    
+    .results {
+      margin-top: 15px;
+      padding: 10px;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
+    
+    .match-category {
+      background: #4CAF50;
+      color: white;
+      padding: 8px 12px;
+      margin: 8px 0;
+      display: block;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    .match-details {
+      margin-left: 15px;
+      margin-bottom: 15px;
+      padding: 10px;
+      background: white;
+      border-radius: 4px;
+      border-left: 3px solid #4CAF50;
+    }
+    
+    .keyword-badge {
+      display: inline-block;
+      background: #e0e0e0;
+      color: #333;
+      padding: 5px 10px;
+      margin: 5px;
+      border-radius: 3px;
+      font-size: 12px;
+      border-left: 3px solid #4CAF50;
+    }
+    
+    .keyword-badge span {
+      font-size: 10px;
+    }
+    
+    .keyword-badge button {
+      background: #FF9800;
+      color: white;
+      border: none;
+      padding: 3px 8px;
+      margin-left: 8px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+    }
+    
+    .keyword-badge button:hover {
+      background: #F57C00;
+    }
+    
+    .no-match {
+      color: #999;
+      font-style: italic;
+    }
+    
+    .match-list {
+      margin-top: 10px;
+    }
+    
+    .delete-cat {
+      background: #f44336;
+      color: white;
+      border: none;
+      padding: 2px 8px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+    }
+    
+    .status {
+      margin-top: 10px;
+      padding: 8px;
+      background: #e3f2fd;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    
+    .nav-controls {
+      margin-top: 10px;
+      padding: 8px;
+      background: #FFF3E0;
+      border-radius: 4px;
+      text-align: center;
+    }
+    
+    .match-mode-box {
+      margin: 10px 0;
+      padding: 10px;
+      background: #f5f5f5;
+      border-radius: 4px;
+      border-left: 3px solid #FF9800;
+    }
+    
+    .match-mode-label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    .match-mode-label input {
+      margin-right: 8px;
+      width: 18px;
+      height: 18px;
+    }
+    
+    .match-mode-label span {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    
+    .match-mode-hint {
+      font-size: 11px;
+      color: #666;
+      margin-top: 5px;
+      margin-left: 26px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>🔍Fundographics Category Matcher</h2>
+    <button id="scanBtn">🔎 Scan Page</button>
+  </div>
+  
+  <div class="tabs">
+    <button class="tab active" data-tab="categories">📁 Categories</button>
+    <button class="tab" data-tab="results">📊 Results</button>
+  </div>
+  
+  <div id="categoriesTab" class="tab-content active">
+    <div id="categoriesList"></div>
+    
+    <div class="add-category">
+      <h4>Add New Category</h4>
+      <input type="text" id="newCatName" placeholder="Category name (e.g., Technology)">
+      <input type="text" id="newCatKeywords" placeholder="Keywords (comma separated)">
+      <button id="addCategoryBtn">+ Add Category</button>
+    </div>
+    
+    <button id="saveCategoriesBtn" class="secondary" style="margin-top: 10px;">💾 Save All Categories</button>
+    <div> <p>For reporting any issues or suggestions reach out to: aditya.shahi@forage.ai</p> </div>
+  </div>
+  
+  <div id="resultsTab" class="tab-content">
+    <div class="match-mode-box">
+      <label class="match-mode-label">
+        <input type="checkbox" id="matchMode">
+        <span>🔍 Match partial words (e.g., "cat" matches "catalog" or "catastrophe")</span>
+      </label>
+      <div class="match-mode-hint">
+        When unchecked, only whole word matches count (e.g., "cat" matches "cat" but NOT "catalog")
+      </div>
+    </div>
+    
+    <div class="results">
+      <strong>📊 Scan Results for Current Page:</strong>
+      <div id="matchResults" class="match-list"></div>
+    </div>
+    <div id="scanStatus" class="status"></div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
